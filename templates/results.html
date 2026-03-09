@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Top Restaurant Recommendations for {{ cuisine }}</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Restaurant Name</th>
+                    <th>Cuisines</th>
+                    <th>Similarity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rec in recs %}
+                <tr>
+                    <td>{{ rec['Restaurant Name'] }}</td>
+                    <td>{{ rec['Cuisines'] }}</td>
+                    <td>{{ "%.2f"|format(rec['Similarity']) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/" class="btn btn-secondary">Back</a>
+    </div>
+</body>
+</html>
